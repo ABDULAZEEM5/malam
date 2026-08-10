@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "654006864020",
+    "project_id": "kimo-3563b",
+    "storage_bucket": "kimo-3563b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654006864020:android:01eff2cb1ae88e37090c81",
+        "android_client_info": {
+          "package_name": "com.example.malam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUi4Lsy1sC4Q2p-QlWIWE_4CJhlfxpR94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
