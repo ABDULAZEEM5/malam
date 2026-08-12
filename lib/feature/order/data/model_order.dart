@@ -6,6 +6,7 @@ class ModelOrder {
   final String address;
   final String orderstatus;
   final String orderid;
+  final String craftsmanid;
   final dynamic timecreated;
   final List<String?> rejectedby;
   ModelOrder({
@@ -18,6 +19,7 @@ class ModelOrder {
     required this.description,
     required this.service,
     required this.address,
+    required this.craftsmanid,
   });
   factory ModelOrder.fromMap(Map<dynamic, dynamic> map) {
     return ModelOrder(
@@ -28,6 +30,7 @@ class ModelOrder {
       service: map["service"] ?? '',
       address: map["address"] ?? '',
       orderid: map["orderId"] ?? '',
+      craftsmanid: map["craftsmanid"] ?? '',
       rejectedby: List.from(map["rejectedby"] ?? ''),
       timecreated: map["createdAt"] ?? '',
     );

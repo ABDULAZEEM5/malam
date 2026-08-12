@@ -19,7 +19,7 @@ class CubitProfile extends Cubit<AuthStatus> {
   File? imageFile;
   UserModel? userModel;
   UserImageModel? userimageModel;
-  
+
   Future<void> pickImage(context) async {
     final image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -33,15 +33,13 @@ class CubitProfile extends Cubit<AuthStatus> {
     }
   }
 
-  Future<String> uploadImage(File file) async {
+  Future<Map<String, String>> uploadImage(File file) async {
     try {
-      emit(ProfileLoading());
+      emit(ProfileimageLoading());
 
-      final imageUrl = await repoProfile.uploadImage(file);
+      final imageData = await repoProfile.uploadImage(file);
 
-      emit(ProfileSuccess());
-
-      return imageUrl;
+      return imageData;
     } catch (e) {
       String message = "حدث خطأ";
 
@@ -51,23 +49,28 @@ class CubitProfile extends Cubit<AuthStatus> {
         message = e.message;
       }
 
-      emit(ProfileErorr(message));
+      emit(ProfileimageErorr(message));
       rethrow;
     }
   }
 
-  Future saveimage(String imageUrl) async {
+  Future<void> saveimage(String imageUrl, String publicId) async {
     try {
       final userid = user;
-      emit(ProfileLoading());
-      await repoProfile.saveimage(imageUrl, userid);
-      emit(ProfileSuccess());
+
+      emit(ProfileimageLoading());
+
+      await repoProfile.saveimage(imageUrl, publicId, userid);
+
+      emit(ProfileimageSuccess());
     } catch (e) {
-      String message = "حدث شي خطاء";
+      String message = "حدث شيء خطأ";
+
       if (e is ApiErorr) {
         message = e.message;
       }
-      emit(ProfileErorr(message));
+
+      emit(ProfileimageErorr(message));
     }
   }
 
@@ -98,7 +101,7 @@ class CubitProfile extends Cubit<AuthStatus> {
         UserModel(name: username, address: useradrrss, phone: userphone),
         userid,
       );
-      emit(ProfileSuccess());
+      //  emit(ProfileSuccess());
     } catch (e) {
       String message = "حدث شي خطاء";
       if (e is ApiErorr) {

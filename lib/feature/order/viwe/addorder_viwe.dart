@@ -16,7 +16,10 @@ import 'package:malam/sheard/custom_buttom.dart';
 import 'package:malam/sheard/custom_text.dart';
 
 class AddorderViwe extends StatefulWidget {
-  const AddorderViwe({super.key});
+  final String? craftsmanid;
+  // final String? service;
+  // final String? address;
+  const AddorderViwe({super.key, this.craftsmanid, });
 
   @override
   State<AddorderViwe> createState() => _AddorderViweState();
@@ -26,9 +29,15 @@ class _AddorderViweState extends State<AddorderViwe> {
   String? selectedService;
   String? selectedaddress;
   TextEditingController discontroller = TextEditingController();
-  TextEditingController addresscontroller = TextEditingController();
+  //TextEditingController addresscontroller = TextEditingController();
 
   GlobalKey<FormState> formstat = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    // selectedService = widget.service!;
+    // selectedaddress = widget.address!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +127,7 @@ class _AddorderViweState extends State<AddorderViwe> {
                       items: sudanCities,
                       onChanged: (value) {
                         setState(() {
-                          selectedaddress = value;
+                          selectedaddress = value!;
                         });
                       },
                       title: 'العنوان',
@@ -170,6 +179,7 @@ class _AddorderViweState extends State<AddorderViwe> {
                                   selectedService!,
                                   selectedaddress!,
                                   discontroller.text,
+                                  widget.craftsmanid??"",
                                 );
                               }
                             },

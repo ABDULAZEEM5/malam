@@ -14,7 +14,7 @@ class CubitOrder extends Cubit<OrderStatus> {
 
   String get userid => FirebaseAuth.instance.currentUser!.uid;
 
-  Future order(String service, String address, String description) async {
+  Future order(String service, String address, String description,String craftsmanid,) async {
     try {
       emit(OrderLoading());
       await repoOrder.order(
@@ -23,6 +23,7 @@ class CubitOrder extends Cubit<OrderStatus> {
         acceptedby: "",
         description: description,
         service: service,
+        craftsmanid:craftsmanid ,
         address: address,
         rejectedby: [],
       );

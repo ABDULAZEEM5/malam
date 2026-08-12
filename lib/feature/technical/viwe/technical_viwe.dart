@@ -52,13 +52,14 @@ class TechnicalViwe extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) => TechincalDetails(
+                          workerimages:techincal.workerimages??[],
                           image: techincal.image,
                           name: techincal.name,
                           descr: techincal.description,
                           title: techincal.service,
                           city: techincal.address,
                           rota: techincal.rota,
-                          experience: techincal.experience,
+                          experience: techincal.experience, craftsmanid: techincal.id,
                         ),
                       ),
                     ),

@@ -19,3 +19,12 @@ class ProfileErorr extends AuthStatus {
   final String message;
   ProfileErorr(this.message);
 }
+
+class ProfileimageLoading extends AuthStatus {}
+
+class ProfileimageSuccess extends AuthStatus {}
+
+class ProfileimageErorr extends AuthStatus {
+  final String message;
+ ProfileimageErorr(this.message);
+}

@@ -12,6 +12,7 @@ class RepoOrder {
     required String description,
     required String service,
     required String address,
+    required String craftsmanid,
     required List<String> rejectedby,
   }) async {
     try {
@@ -32,6 +33,7 @@ class RepoOrder {
       await BackendService.sendOrderNotification(
         service: service,
         address: address,
+        craftsmanId: craftsmanid,
       );
     } on FirebaseException catch (e) {
       throw FirebaseExceptionHandler.handleError(e);
@@ -46,7 +48,7 @@ class RepoOrder {
     try {
       final response = await FirebaseFirestore.instance
           .collection("orders")
-          .where("orderstatus", whereIn: ["قبول","قيدالانتظار"])
+          .where("orderstatus", whereIn: ["قبول", "قيدالانتظار"])
           .where("userid", isEqualTo: userid)
           .where("deleteduser", isEqualTo: false)
           .get();

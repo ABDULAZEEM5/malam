@@ -1,5 +1,5 @@
-
 class ModleTechnical {
+  final String id;
   final String name;
   final String service;
   final String description;
@@ -7,8 +7,10 @@ class ModleTechnical {
   final String experience;
   final String rota;
   final String image;
+  final List<ImgesWorkerModle>? workerimages;
 
   ModleTechnical({
+    required this.id,
     required this.name,
     required this.address,
     required this.service,
@@ -16,21 +18,29 @@ class ModleTechnical {
     required this.description,
     required this.experience,
     required this.rota,
+    this.workerimages,
   });
 
   factory ModleTechnical.fromMap(Map<String, dynamic> map) {
     return ModleTechnical(
-      name: map["name"]??"",
-      address: map["address"]??"",
-      service: map["service"]??"",
-      image: map["image"]??"",
-      description: map["description"]??"",
-      experience: map["experience"]??"",
-      rota: map["rota"]??"",
+      id: map["id"] ?? "",
+      name: map["name"] ?? "",
+      address: map["address"] ?? "",
+      service: map["service"] ?? "",
+      image: map["imageUrl"] ?? "",
+      description: map["description"] ?? "",
+      experience: map["experience"] ?? "",
+      rota: map["rota"] ?? "",
+      workerimages: (map['workImages'] as List?)
+          ?.map(
+            (item) => ImgesWorkerModle.fromMap(Map<String, dynamic>.from(item)),
+          )
+          .toList(),
     );
   }
 
   Map<String, dynamic> toMap() => {
+    "id": id,
     "name": name,
     "description": description,
     "address": address,
@@ -39,4 +49,18 @@ class ModleTechnical {
     "experience": experience,
     "rota": rota,
   };
+}
+
+class ImgesWorkerModle {
+  final String imageUrl;
+  final String publicId;
+
+  ImgesWorkerModle({required this.imageUrl, required this.publicId});
+
+  factory ImgesWorkerModle.fromMap(Map<String, dynamic> map) {
+    return ImgesWorkerModle(
+      imageUrl: map["imageUrl"],
+      publicId: map["publicId"],
+    );
+  }
 }

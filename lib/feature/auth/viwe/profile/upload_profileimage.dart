@@ -21,8 +21,8 @@ class UploadProfileImage extends StatelessWidget {
       extendBody: true,
       body: BlocConsumer<CubitProfile, AuthStatus>(
         listener: (context, state) {
-          if (state is ProfileSuccess) {
-            customshoSnackBar(context, "the image is successfluy uploading");
+          if (state is ProfileimageSuccess) {
+            customshoSnackBar(context, "تم تحميل الصورة بنجاح",Appcolor.green);
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (_) => Root(intiailaIndex: 0)),
@@ -57,7 +57,7 @@ class UploadProfileImage extends StatelessWidget {
                           height: 50,
                           width: 150,
                         ),
-                        state is ProfileLoading == true
+                        state is ProfileimageLoading == true
                             ? CupertinoActivityIndicator(
                                 color: Appcolor.primaryColor,
                               )
@@ -72,10 +72,13 @@ class UploadProfileImage extends StatelessWidget {
                                     return;
                                   }
 
-                                  final imageUrl = await cubit.uploadImage(
+                                final imageData = await cubit.uploadImage(
                                     cubit.imageFile!,
                                   );
-                                  await cubit.saveimage(imageUrl);
+                                  await cubit.saveimage(
+                                    imageData["imageUrl"]!,
+                                    imageData["publicId"]!,
+                                  );
                                   cubit.getuserdata();
                                 },
                                 height: 50,

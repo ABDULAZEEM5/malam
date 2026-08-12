@@ -9,7 +9,7 @@ class CubitTechnical extends Cubit<TechnicalStatus> {
   List<ModleTechnical?> modletchnical = [];
   ModleTechnical? onemodletechnicl;
   RepoTechnicla repotechnical = RepoTechnicla();
-
+  String? craftsmanid;
   Future gettechnical() async {
     try {
       emit(TechnicalLoading());
@@ -25,11 +25,12 @@ class CubitTechnical extends Cubit<TechnicalStatus> {
     }
   }
 
-   Future getonetechnical() async {
+  Future getonetechnical() async {
     try {
       emit(TechnicalLoading());
       final data = await repotechnical.getnoetechnical();
       onemodletechnicl = data;
+
       emit(TechnicalSuccess());
     } catch (e) {
       String message = "حدث شي خطاء";

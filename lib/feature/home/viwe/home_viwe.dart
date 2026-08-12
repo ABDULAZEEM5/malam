@@ -168,6 +168,8 @@ class _HomeViewState extends State<HomeView> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (_) => TechincalDetails(
+                                        workerimages: cubit.onemodletechnicl!.workerimages,
+                                        craftsmanid: cubit.onemodletechnicl!.id,
                                         image: cubit.onemodletechnicl!.image,
                                         name: cubit.onemodletechnicl!.name,
                                         descr:
