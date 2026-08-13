@@ -29,6 +29,7 @@ class RepoOrder {
         "deleteduser": false,
         "orderId": docRef.id,
         "createdAt": FieldValue.serverTimestamp(),
+        "craftsmanId":craftsmanid,
       });
       await BackendService.sendOrderNotification(
         service: service,
