@@ -10,6 +10,7 @@ import 'package:malam/feature/auth/viwe/signin.dart';
 import 'package:malam/feature/auth/widget/custom_buttom.dart';
 import 'package:malam/feature/auth/widget/custom_textfiled.dart';
 import 'package:malam/sheard/custm_showsnakbar.dart';
+import 'package:malam/sheard/custom_text.dart';
 
 class SignUpViwe extends StatefulWidget {
   const SignUpViwe({super.key});
@@ -63,20 +64,20 @@ class _SignUpViweState extends State<SignUpViwe> {
                     children: [
                       Image.asset('assets/logo/logo.png', height: 180),
 
-                      const Text(
-                        "مرحباً بك",
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                      const CustomText(
+                        text: "مرحباً بك",
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
 
                       const Gap(8),
 
-                      const Text(
-                        "انشاء حساب لطلب أفضل الخدمات",
-                        style: TextStyle(fontSize: 16, color: Colors.white70),
+                      const CustomText(
+                        text: "انشاء حساب لطلب أفضل الخدمات",
+                        fontSize: 16,
+                        color: Colors.white70,
+                        fontWeight: FontWeight.normal,
                       ),
 
                       const Gap(35),
@@ -112,22 +113,7 @@ class _SignUpViweState extends State<SignUpViwe> {
                                 isPassword: true,
                               ),
 
-                              const Gap(10),
-
-                              // Align(
-                              //   alignment: Alignment.centerLeft,
-                              //   child: TextButton(
-                              //     onPressed: () {},
-                              //     child: Text(
-                              //       "نسيت كلمة المرور؟",
-                              //       style: TextStyle(
-                              //         color: Appcolor.primaryColor,
-                              //         fontWeight: FontWeight.w600,
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                              const Gap(10),
+                              const Gap(20),
 
                               BlocBuilder<CubitAuth, AuthStatus>(
                                 builder: (context, state) {
@@ -183,12 +169,10 @@ class _SignUpViweState extends State<SignUpViwe> {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
-                                  child: const Text(
-                                    "لدي حساب بالفعل",
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  child: const CustomText(
+                                    text: "لدي حساب بالفعل",
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),

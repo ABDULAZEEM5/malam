@@ -5,11 +5,13 @@ import 'package:gap/gap.dart';
 import 'package:malam/core/constans/appcolor.dart';
 import 'package:malam/feature/auth/cubit/cubit_auth.dart';
 import 'package:malam/feature/auth/cubit/status_auth.dart';
+import 'package:malam/feature/auth/viwe/resetpass.dart';
 import 'package:malam/feature/auth/viwe/signup.dart';
 import 'package:malam/feature/auth/widget/custom_buttom.dart';
 import 'package:malam/feature/auth/widget/custom_textfiled.dart';
 import 'package:malam/root.dart';
 import 'package:malam/sheard/custm_showsnakbar.dart';
+import 'package:malam/sheard/custom_text.dart';
 
 class SigninViwe extends StatefulWidget {
   const SigninViwe({super.key});
@@ -66,18 +68,18 @@ class _SigninViweState extends State<SigninViwe> {
                     child: Column(
                       children: [
                         Image.asset('assets/logo/logo.png', height: 180),
-                        const Text(
-                          "مرحباً بك",
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                        const CustomText(
+                          text: "مرحباً بك",
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                         const Gap(8),
-                        const Text(
-                          "سجل دخولك لطلب أفضل الخدمات",
-                          style: TextStyle(fontSize: 16, color: Colors.white70),
+                        const CustomText(
+                          text: "سجل دخولك لطلب أفضل الخدمات",
+                          fontSize: 16,
+                          color: Colors.white70,
+                          fontWeight: FontWeight.normal,
                         ),
                         const Gap(35),
 
@@ -117,13 +119,21 @@ class _SigninViweState extends State<SigninViwe> {
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "نسيت كلمة المرور؟",
-                                      style: TextStyle(
-                                        color: Appcolor.primaryColor,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) =>
+                                              PasswordResetEmailViwe(),
+                                        ),
+                                      );
+                                    },
+                                    child: CustomText(
+                                      text: "نسيت كلمة المرور؟",
+
+                                      color: Appcolor.primaryColor,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14,
                                     ),
                                   ),
                                 ),
@@ -175,12 +185,10 @@ class _SigninViweState extends State<SigninViwe> {
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                     ),
-                                    child: const Text(
-                                      "إنشاء حساب",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                    child: const CustomText(
+                                      text: "إنشاء حساب",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),

@@ -34,6 +34,18 @@ class Authrepo {
     }
   }
 
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    } on FirebaseException catch (e) {
+      throw FirebaseExceptionHandler.handleError(e);
+    } on ApiErorr {
+      rethrow;
+    } catch (e) {
+      throw ApiErorr(message: e.toString());
+    }
+  }
+
   Future<void> complitesignup(
     String userid,
     String username,

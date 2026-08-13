@@ -28,7 +28,21 @@ class CubitAuth extends Cubit<AuthStatus> {
     try {
       emit(AuthLoading());
       await authrepo.signin(email, password);
-       await OneSignalService.init();
+      await OneSignalService.init();
+      emit(AuthSuccess());
+    } catch (e) {
+      String message = "حدث شي خطاء";
+      if (e is ApiErorr) {
+        message = e.message;
+      }
+      emit(AuthErorr(message));
+    }
+  }
+
+  Future sendPasswordResetEmail(String email) async {
+    try {
+      emit(AuthLoading());
+      await authrepo.sendPasswordResetEmail(email);
       emit(AuthSuccess());
     } catch (e) {
       String message = "حدث شي خطاء";
