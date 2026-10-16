@@ -31,6 +31,7 @@ class CubitOrder extends Cubit<OrderStatus> {
     } catch (e) {
       String message = "حدث شي خطاء";
       if (e is ApiErorr) {
+        print("////////////////////////////////${message.toString()}/${e.message}///////////////////////////////////////");
         message = e.message;
       }
       emit(OrderErorr(message: message));

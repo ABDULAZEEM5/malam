@@ -19,7 +19,7 @@ class AddorderViwe extends StatefulWidget {
   final String? craftsmanid;
   // final String? service;
   // final String? address;
-  const AddorderViwe({super.key, this.craftsmanid, });
+  const AddorderViwe({super.key, this.craftsmanid});
 
   @override
   State<AddorderViwe> createState() => _AddorderViweState();
@@ -179,7 +179,7 @@ class _AddorderViweState extends State<AddorderViwe> {
                                   selectedService!,
                                   selectedaddress!,
                                   discontroller.text,
-                                  widget.craftsmanid??"",
+                                  widget.craftsmanid ?? "",
                                 );
                               }
                             },

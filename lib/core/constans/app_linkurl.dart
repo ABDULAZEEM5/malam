@@ -1,3 +1,3 @@
 class AppLinkurl {
-  static const String link = "http://192.168.100.21:3000";
+  static const String link = "http://10.57.58.163:3000";
 }

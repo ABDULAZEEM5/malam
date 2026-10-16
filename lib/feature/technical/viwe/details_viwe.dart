@@ -284,7 +284,7 @@ class TechincalDetails extends StatelessWidget {
                   ),
 
                   const Gap(20),
-                  CustomImages(images: workerimages!),
+                  CustomImages(images: workerimages??[]),
 
                   /// Buttons
                   const Spacer(),

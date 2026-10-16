@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:malam/core/constans/appcolor.dart';
+import 'package:malam/feature/home/widget/custom_textfiled.dart';
 import 'package:malam/feature/technical/cubit/cubit_technical.dart';
 import 'package:malam/feature/technical/cubit/status.dart';
 import 'package:malam/feature/technical/viwe/details_viwe.dart';
@@ -13,6 +15,7 @@ class TechnicalViwe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -52,14 +55,15 @@ class TechnicalViwe extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) => TechincalDetails(
-                          workerimages:techincal.workerimages??[],
+                          workerimages: techincal.workerimages ?? [],
                           image: techincal.image,
                           name: techincal.name,
                           descr: techincal.description,
                           title: techincal.service,
                           city: techincal.address,
                           rota: techincal.rota,
-                          experience: techincal.experience, craftsmanid: techincal.id,
+                          experience: techincal.experience,
+                          craftsmanid: techincal.id,
                         ),
                       ),
                     ),

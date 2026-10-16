@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -7,6 +8,7 @@ import 'package:malam/feature/auth/cubit/status_auth.dart';
 import 'package:malam/feature/home/cubit/home_cubit.dart';
 import 'package:malam/feature/home/cubit/status.dart';
 import 'package:malam/feature/home/viwe/notification_viwe.dart';
+import 'package:malam/feature/home/viwe/services_details.dart';
 import 'package:malam/feature/home/widget/card_service.dart';
 import 'package:malam/feature/home/widget/card_techincal.dart';
 import 'package:malam/feature/home/widget/custom_textfiled.dart';
@@ -120,6 +122,7 @@ class _HomeViewState extends State<HomeView> {
                           },
                         ),
                       ),
+
                       Gap(10),
                       Row(
                         children: [
@@ -168,7 +171,9 @@ class _HomeViewState extends State<HomeView> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (_) => TechincalDetails(
-                                        workerimages: cubit.onemodletechnicl!.workerimages,
+                                        workerimages: cubit
+                                            .onemodletechnicl!
+                                            .workerimages,
                                         craftsmanid: cubit.onemodletechnicl!.id,
                                         image: cubit.onemodletechnicl!.image,
                                         name: cubit.onemodletechnicl!.name,

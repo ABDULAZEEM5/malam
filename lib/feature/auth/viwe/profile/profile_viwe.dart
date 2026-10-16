@@ -14,6 +14,7 @@ import 'package:malam/feature/order/viwe/order_historyviwe.dart';
 import 'package:malam/sheard/custom_buttom.dart';
 import 'package:malam/sheard/custom_text.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileViwe extends StatelessWidget {
   const ProfileViwe({super.key});
@@ -132,7 +133,9 @@ class ProfileViwe extends StatelessWidget {
                       _divider(),
 
                       CustomProfileitem(
-                        onTap: () {},
+                        onTap: () {
+                           launchUrl(Uri.parse("https://wa.me/9647838227243"));
+                        },
                         icon: Icons.help_outline,
                         title: "مساعدة",
                       ),

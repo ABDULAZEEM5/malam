@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:malam/core/constans/exitformapp.dart';
 import 'package:malam/feature/auth/viwe/profile/profile_viwe.dart';
 import 'package:malam/feature/checkinternet/cubit/cubit_checkinternet.dart';
 import 'package:malam/feature/checkinternet/viwe/nointernetpage.dart';
@@ -34,36 +35,42 @@ class _RootState extends State<Root> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      backgroundColor: Colors.transparent,
-
-      body: Stack(
-        children: [
-          PageView(
-            controller: controller,
-            physics: const NeverScrollableScrollPhysics(),
-            children: pages,
-          ),
-          BlocBuilder<InternetCubit, InternetState>(
-            builder: (context, state) {
-              if (state == InternetState.disconnected) {
-                return const Positioned.fill(child: NoInternetPage());
-              }
-
-              return const SizedBox();
-            },
-          ),
-        ],
-      ),
-      bottomNavigationBar: CustomBottomNavBar(
-        currentpage: currentIndex,
-        onTap: (v) {
-          setState(() {
-            currentIndex = v;
-            controller!.jumpToPage(v);
-          });
-        },
+    return PopScope(
+     canPop: false,
+          onPopInvokedWithResult: (didPop, result) {
+             exitApp(context);
+          },
+      child: Scaffold(
+        extendBody: true,
+        backgroundColor: Colors.transparent,
+      
+        body: Stack(
+          children: [
+            PageView(
+              controller: controller,
+              physics: const NeverScrollableScrollPhysics(),
+              children: pages,
+            ),
+            BlocBuilder<InternetCubit, InternetState>(
+              builder: (context, state) {
+                if (state == InternetState.disconnected) {
+                  return const Positioned.fill(child: NoInternetPage());
+                }
+      
+                return const SizedBox();
+              },
+            ),
+          ],
+        ),
+        bottomNavigationBar: CustomBottomNavBar(
+          currentpage: currentIndex,
+          onTap: (v) {
+            setState(() {
+              currentIndex = v;
+              controller!.jumpToPage(v);
+            });
+          },
+        ),
       ),
     );
   }

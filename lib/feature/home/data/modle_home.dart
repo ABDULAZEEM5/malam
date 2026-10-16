@@ -1,9 +1,18 @@
 class ModleHome {
   final String name;
   final String icon;
-  ModleHome({required this.name, required this.icon});
+  final String description;
+  ModleHome({
+    required this.name,
+    required this.icon,
+    required this.description,
+  });
   factory ModleHome.fromMap(Map<String, dynamic> map) {
-    return ModleHome(name: map["name"], icon: map["icon"]);
+    return ModleHome(
+      name: map["name"],
+      icon: map["icon"],
+      description: map["description"],
+    );
   }
 
   Map<String, dynamic> toMap() => {"name": name, "icon": icon};

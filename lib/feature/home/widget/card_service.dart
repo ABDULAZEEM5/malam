@@ -2,24 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:malam/core/constans/appcolor.dart';
 import 'package:malam/feature/home/data/modle_home.dart';
+import 'package:malam/feature/home/viwe/services_details.dart';
 import 'package:malam/sheard/custom_text.dart';
 
 class ServiceCard extends StatelessWidget {
-  final  ModleHome? services;
+  final ModleHome? services;
 
-  const ServiceCard({super.key,required this.services});
+  const ServiceCard({super.key, required this.services});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(15),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => ServicesDetails(
+              name: services!.name,
+              image: services!.icon,
+              description: services!.description,
+            ),
+          ),
+        );
+      },
       child: Card(
         elevation: 5,
 
         color: Appcolor.greyColor,
         shadowColor: Colors.black.withValues(alpha: .12),
-        
+
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 1),
@@ -135,7 +147,7 @@ class ServiceCard extends StatelessWidget {
 //                   text: service.name,
 //                   fontSize: 14,
 //                   fontWeight: FontWeight.w600,
-                 
+
 //                 ),
 //               ],
 //             ),
